@@ -7,6 +7,8 @@ from sporttech_bots.spiders.skybet_spider import \
 from sporttech_bots.spiders.williamhill_spider import \
     WilliamhillSpider
 
+from helper.common import Common
+
 
 class InfoVisualizer(object):
 
@@ -19,7 +21,8 @@ class InfoVisualizer(object):
         process.crawl(SkybetSpider)
         process.crawl(WilliamhillSpider)
         process.start()
-        print('Done')
+        result = Common.read_result()
+        print(result)
 
 
 if __name__ == '__main__':

@@ -15,3 +15,12 @@ class Common(object):
         file_name = '{}.json'.format(name)
         with open(os.path.join(cls.RESULT_DIR, file_name), 'w') as f:
             json.dump(result, f)
+
+    @classmethod
+    def read_result(cls):
+        result = {}
+        for file in os.listdir(cls.RESULT_DIR):
+            with open(os.path.join(cls.RESULT_DIR, file)) as f:
+                name = file.split('.')[0]
+                result[name] = json.load(f)
+        return result
