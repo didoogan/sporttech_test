@@ -1,9 +1,10 @@
 from scrapy.crawler import CrawlerProcess
 
-from sporttech_bots.sporttech_bots.spiders.paddypower_spider import \
+from sporttech_bots.spiders.paddypower_spider import \
     PaddypowerSpider
-from sporttech_bots.sporttech_bots.spiders.skybet_spider import SkybetSpider
-from sporttech_bots.sporttech_bots.spiders.williamhill_spider import \
+from sporttech_bots.spiders.skybet_spider import \
+    SkybetSpider
+from sporttech_bots.spiders.williamhill_spider import \
     WilliamhillSpider
 
 

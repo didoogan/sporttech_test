@@ -26,4 +26,4 @@ class PaddypowerSpider(scrapy.Spider):
         result = {}
         for bet in bets:
             self.parse_bet(bet, result)
-        return result
+        Common.write_result(self.name, result)

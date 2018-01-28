@@ -33,4 +33,4 @@ class SkybetSpider(scrapy.Spider):
         substrings = str(response.body).split('isplayOrder')[2:]
         for substring in substrings:
             self.parse_substring(substring, result)
-        return result
+        Common.write_result(self.name, result)

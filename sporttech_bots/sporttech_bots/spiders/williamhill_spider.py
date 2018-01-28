@@ -30,4 +30,5 @@ class WilliamhillSpider(scrapy.Spider):
         countries = [self.process_raw_country(rc) for rc in raw_countries]
         raw_bets = response.xpath('//div[@class="eventprice"]/text()')
         bets = [self.process_raw_bet(rb) for rb in raw_bets]
-        return dict(zip(countries, bets))
+        result = dict(zip(countries, bets))
+        Common.write_result(self.name, result)
