@@ -1,3 +1,4 @@
+
 from scrapy.crawler import CrawlerProcess
 
 from sporttech_bots.spiders.paddypower_spider import \
@@ -8,6 +9,7 @@ from sporttech_bots.spiders.williamhill_spider import \
     WilliamhillSpider
 
 from helper.common import Common
+from tabulate import tabulate
 
 
 class InfoVisualizer(object):
@@ -22,7 +24,7 @@ class InfoVisualizer(object):
         process.crawl(WilliamhillSpider)
         process.start()
         result = Common.read_result()
-        print(result)
+        print(tabulate(result['result'], result['headers'], tablefmt="grid"))
 
 
 if __name__ == '__main__':

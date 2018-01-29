@@ -1,5 +1,6 @@
 import json
 import os
+from collections import OrderedDict
 
 
 class Common(object):
@@ -23,4 +24,22 @@ class Common(object):
             with open(os.path.join(cls.RESULT_DIR, file)) as f:
                 name = file.split('.')[0]
                 result[name] = json.load(f)
-        return result
+        content = {}
+        countries = set()
+        sites = []
+        for site in result:
+            sites.append(site)
+            content[site] = []
+            for country in result[site]:
+                countries.add(country)
+        countries = list(countries)
+        headers = ['Country']
+        for site in result:
+            headers.append(site)
+            for country in countries:
+                content[site].append(result[site].get(country, '-'))
+        res = OrderedDict()
+        res['country'] = countries
+        for country in result:
+            res[country] = content[site]
+        return {'result': res, 'headers': headers}
